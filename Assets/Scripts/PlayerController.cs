@@ -15,6 +15,9 @@ public class PlayerController : MonoBehaviour
     Vector2 savePoint; // El lugar al que debe regresar el jugador
     [SerializeField] float RespawnHeight; // La altura de caída; si el jugador alguna vez está por debajo de ella, lo devolveremos al punto de guardado.
     [SerializeField]Animator animEspada;
+
+    [SerializeField] Collider2D espada;
+
     void Start()
     {
         
@@ -51,7 +54,7 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
 
-        if (Input.GetKeyDown(KeyCode.J))
+        if (Input.GetButton("Fire1"))
         {
 
             Ataque();
@@ -60,7 +63,12 @@ public class PlayerController : MonoBehaviour
 
     void Ataque()
     {
+        espada.GetComponent<Collider2D>().enabled=true;
         animEspada.SetTrigger("Ataque");
 
+    }
+    public void EndAttack()
+    {
+        espada.GetComponent<Collider2D>().enabled = false;
     }
 }

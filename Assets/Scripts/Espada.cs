@@ -18,4 +18,9 @@ public class Espada : MonoBehaviour
     {
         
     }
+
+    public void EndAttack()
+    {
+       GetComponent<Collider2D>().enabled = false;
+    }
 }
