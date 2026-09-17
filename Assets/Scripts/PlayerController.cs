@@ -28,16 +28,16 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
-/*
+
         if (horizontalInput > 0)
         {
-            sprite.flipX = false;
+           transform.rotation = Quaternion.Euler(0f,0f,0f);
         }
         if (horizontalInput < 0)
         {
-            sprite.flipX = true;
+            transform.rotation = Quaternion.Euler(0f, -180f, 0f);
         }
-*/
+
         // Controles de personaje
         rb.velocity = new Vector2(horizontalInput * speed, rb.velocity.y);
 
@@ -67,8 +67,5 @@ public class PlayerController : MonoBehaviour
         animEspada.SetTrigger("Ataque");
 
     }
-    public void EndAttack()
-    {
-        espada.GetComponent<Collider2D>().enabled = false;
-    }
+
 }
