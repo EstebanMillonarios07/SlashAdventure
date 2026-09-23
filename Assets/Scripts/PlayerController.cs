@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IDamageable
 {
     // Start is called before the first frame update
     [SerializeField] float speed = 5f;
@@ -59,6 +59,22 @@ public class PlayerController : MonoBehaviour
 
             Ataque();
         }
+    }
+
+    [SerializeField] float health;
+    public void GetDamage(float damage)
+    {
+        health -= damage;
+        if (health <= 0)
+        {
+            Die();
+
+        }
+    }
+
+    void Die()
+    {
+        Destroy(gameObject);
     }
 
     void Ataque()

@@ -9,7 +9,7 @@ public class Espada : MonoBehaviour
     {
         if (other.CompareTag ("Enemy"))
         {
-            other.GetComponent<Enemy>().GetDamage(1);
+            other.GetComponent<IDamageable>().GetDamage(1f);
         }  
     }
 
